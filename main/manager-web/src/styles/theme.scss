@@ -1,0 +1,25 @@
+:root {
+  --val-bg: #0b0f1a;
+  --val-bg-elevated: #121829;
+  --val-bg-card: rgba(22, 30, 52, 0.72);
+  --val-bg-glass: rgba(0, 0, 0, 0.06);
+  --val-border: rgba(0, 0, 0, 0.1);
+  --val-border-strong: rgba(0, 0, 0, 0.18);
+  --val-primary: #7c5cff;
+  --val-primary-hover: #9278ff;
+  --val-primary-dark: #5b3fd9;
+  --val-accent: #00e5c8;
+  --val-accent-soft: rgba(0, 229, 200, 0.15);
+  --val-text: #eef2ff;
+  --val-text-muted: #94a3b8;
+  --val-text-dim: #64748b;
+  --val-danger: #ff6b8a;
+  --val-success: #34d399;
+  --val-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  --val-shadow-glow: 0 0 40px rgba(124, 92, 255, 0.35);
+  --val-radius-lg: 20px;
+  --val-radius-md: 14px;
+  --val-radius-sm: 10px;
+  --val-font: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --val-transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}

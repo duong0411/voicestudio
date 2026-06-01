@@ -1,0 +1,78 @@
+import type { UserInfo } from '@/api/auth'
+import { defineStore } from 'pinia'
+import { ref } from 'vue'
+import {
+  getUserInfo as _getUserInfo,
+} from '@/api/auth'
+
+
+const userInfoState: UserInfo & { avatar?: string, token?: string } = {
+  id: 0,
+  username: '',
+  realName: '',
+  email: '',
+  mobile: '',
+  status: 0,
+  superAdmin: 0,
+  avatar: '/static/images/default-avatar.png',
+  token: '',
+}
+
+export const useUserStore = defineStore(
+  'userInfo',
+  () => {
+
+    const userInfo = ref<UserInfo & { avatar?: string, token?: string }>({ ...userInfoState })
+
+    const setUserInfo = (val: UserInfo & { avatar?: string, token?: string }) => {
+      console.log('', val)
+
+      if (!val.avatar) {
+        val.avatar = userInfoState.avatar
+      }
+      else {
+        val.avatar = 'https://oss.laf.run/ukw0y1-site/avatar.jpg?feige'
+      }
+      userInfo.value = val
+    }
+    const setUserAvatar = (avatar: string) => {
+      userInfo.value.avatar = avatar
+      console.log('', avatar)
+      console.log('userInfo', userInfo.value)
+    }
+
+    const removeUserInfo = () => {
+      userInfo.value = { ...userInfoState }
+      uni.removeStorageSync('userInfo')
+      uni.removeStorageSync('token')
+    }
+    
+    const getUserInfo = async () => {
+      const userData = await _getUserInfo()
+      setUserInfo(userData)
+      return userData
+    }
+    
+    const logout = async () => {
+      removeUserInfo()
+    }
+
+    return {
+      userInfo,
+      getUserInfo,
+      setUserInfo,
+      setUserAvatar,
+      logout,
+      removeUserInfo,
+    }
+  },
+  {
+    persist: {
+      key: 'userInfo',
+      serializer: {
+        serialize: state => JSON.stringify(state.userInfo),
+        deserialize: value => ({ userInfo: JSON.parse(value) }),
+      },
+    },
+  },
+)

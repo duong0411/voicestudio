@@ -1,0 +1,13 @@
+.git
+__pycache__
+*.pyc
+.env
+Dockerfile
+tmp/
+data/
+**/node_modules
+**/target
+main/xiaozhi-server/mysql/data
+main/xiaozhi-server/data/
+main/xiaozhi-server/logs/
+main/xiaozhi-server/tmp/

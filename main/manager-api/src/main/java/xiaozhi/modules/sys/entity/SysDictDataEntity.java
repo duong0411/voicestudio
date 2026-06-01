@@ -1,0 +1,34 @@
+package xiaozhi.modules.sys.entity;
+
+import java.util.Date;
+
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import xiaozhi.common.entity.BaseEntity;
+
+
+@Data
+@EqualsAndHashCode(callSuper = false)
+@TableName("sys_dict_data")
+public class SysDictDataEntity extends BaseEntity {
+    
+    private Long dictTypeId;
+    
+    private String dictLabel;
+    
+    private String dictValue;
+    
+    private String remark;
+    
+    private Integer sort;
+    
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Long updater;
+    
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Date updateDate;
+}
