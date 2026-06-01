@@ -40,7 +40,7 @@ if errorlevel 1 (
 )
 
 echo ==> 3. Rebuilding web manager docker image (Vue + Java)...
-docker build -f Dockerfile-web -t voiceal-web:latest .
+docker build --no-cache -f Dockerfile-web -t voiceal-web:latest .
 if errorlevel 1 (
     echo Error building Dockerfile-web
     exit /b 1
